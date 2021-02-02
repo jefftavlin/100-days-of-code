@@ -30,18 +30,20 @@ q1 = input("You're at a cross road. Where do you want to go ? Type 'left' or 'ri
 if q1 != 'left':
   print('Fall into a hole. Game Over.')
 
-q2 = input("You come to a lake. There is an island in the middle of the lake. Type 'wait' to wait for a boat. Type 'swim' to swim across.\n")
-
-if q2 != 'wait':
-  print('Attacked by a trout. Game Over.')
-
-q3  = input("You arrive at the island unharmed. There is a house with 3 doors. One red, one yellow and one blue. Which color do you choose?\n")
-
-if q3 == 'red':
-  print('Burned by fire. Game Over.')
-elif q3 == 'blue':
-  print('Eaten by beasts. Game Over.')
-elif q3 == 'yellow':
-  print('You win!')
 else:
-  print('Game Over.')
+  q2 = input("You come to a lake. There is an island in the middle of the lake. Type 'wait' to wait for a boat. Type 'swim' to swim across.\n")
+
+  if q2 != 'wait':
+    print('Attacked by a trout. Game Over.')
+  
+  else:
+    q3  = input("You arrive at the island unharmed. There is a house with 3 doors. One red, one yellow and one blue. Which color do you choose?\n")
+
+    if q3 == 'red':
+      print('Burned by fire. Game Over.')
+    elif q3 == 'blue':
+      print('Eaten by beasts. Game Over.')
+    elif q3 == 'yellow':
+      print('You win!')
+    else:
+      print('Game Over.')
