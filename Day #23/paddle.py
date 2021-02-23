@@ -1,29 +1,40 @@
 from turtle import Turtle
-import random
-import time
+DISTANCE = 20
+UP = 90
+DOWN = 270
+PIECES = 5
 
+class Paddle:
+    def __init__(self, x_cor):
+        #initialize an empty list
+        self.pieces = []
+        self.x_cor = x_cor
+        self.body = self.create_body()
+        self.head = self.body[0]
 
-class Ball(Turtle):
-    def __init__(self):
-        super().__init__()
-        self.shape('circle')
-        self.penup()
-        self.shapesize(stretch_len=0.5, stretch_wid=0.5)
-        self.color('white')
-        self.y_move = 10
-        self.x_move = 10
+    def create_body(self):
+        for num, piece in enumerate(['piece' for piece in range(PIECES)]):
+            paddle = Turtle(shape='square')
+            paddle.speed(0)
+            paddle.penup()
+            paddle.sety(num * -DISTANCE + 50)
+            paddle.setx(self.x_cor)
+            paddle.color('white')
+            self.pieces.append(paddle)
+        return self.pieces
 
-    def move(self):
-        new_x = self.xcor() + self.x_move
-        new_y = self.ycor() + self.y_move
-        self.goto(new_x, new_y)
-        time.sleep(0.05)
+    def up(self):
+        self.body[0].seth(UP)
+        for piece in range(len(self.body) - 1, 0, -1):
+            new_x = self.body[piece - 1].xcor()
+            new_y = self.body[piece - 1].ycor()
+            self.body[piece].goto(new_x, new_y)
+        self.body[0].forward(DISTANCE)
 
-    def bounce(self):
-        self.y_move *= -1
-
-    def rebound(self):
-        self.x_move *= -1
-
-    def restart(self):
-        self.goto(0,0)
+    def down(self):
+        self.body[-1].seth(DOWN)
+        for piece in range(0, len(self.body) - 1):
+            new_x = self.body[piece + 1].xcor()
+            new_y = self.body[piece + 1].ycor()
+            self.body[piece].goto(new_x, new_y)
+        self.body[-1].forward(DISTANCE)
