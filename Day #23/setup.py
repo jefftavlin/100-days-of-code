@@ -30,3 +30,5 @@ class Setup(Turtle):
     def onkey(self,func, key):
         self.screen.listen()
         self.screen.onkey(func, key)
+    def quit(self):
+        self.screen.bye()
