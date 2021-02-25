@@ -12,22 +12,30 @@ with open(starting_letter_path) as starting_letter:
 
 names = [name.split('\n')[0] for name in names]
 
-def replace_name(letter_to_use, name):
-    final_letter = []
-    for line in letter_to_use:
-        if '[name]' in line:
-            final_letter.append(f'Dear {name}, \n')
-        else:
-            final_letter.append(line)
-    return final_letter
+class Letter():
+    def __init__(self, name, letter):
+        self.name = name
+        self.letter = letter
 
-def create_file_paths(name):
-    final_path = f'{output_path}/letter_for_{name}.txt'
-    return final_path
+        self.final_letter = self.replace_name()
+        self.final_path = self.create_file_paths()
+
+    def replace_name(self):
+        final_letter = []
+        for line in self.letter:
+            if '[name]' in line:
+                final_letter.append(f'Dear {self.name}, \n')
+            else:
+                final_letter.append(line)
+        return final_letter
+
+    def create_file_paths(self):
+        final_path = f'{output_path}/letter_for_{self.name}.txt'
+        return final_path
+
 
 for name in names:
-    file_path = create_file_paths(name)
-    letter = replace_name(starting_letter, name)
-    with open(file_path, 'w') as file:
-        for line in letter:
+    current_letter = Letter(name, starting_letter)
+    with open(current_letter.final_path, 'w') as file:
+        for line in current_letter.final_letter:
             file.write(line)
