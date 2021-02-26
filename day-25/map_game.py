@@ -16,4 +16,7 @@ class Game:
 
     def place_on_map(self):
         state = Turtle()
+        state.penup()
+        state.hideturtle()
         state.goto(self.x, self.y)
+        state.write(self.state_answer)
