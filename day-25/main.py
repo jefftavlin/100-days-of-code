@@ -12,8 +12,14 @@ game = True
 while game:
     answer_state = map.user_input()
     if answer_state in df['state'].values:
+        map.update_score()
         state = Game(df, answer_state)
+    elif answer_state == 'quit':
+        break
     else:
         pass
 
 map.screen.exitonclick()
+
+missing_states = df[~df['state'].isin(map.states_chosen)]
+missing_states['state'].to_csv('wrong_answer.csv')
