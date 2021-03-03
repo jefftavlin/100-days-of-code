@@ -58,9 +58,9 @@ class Pomodoro:
 
     def start_timer(self):
         self.reps += 1
-        work_time = 10
-        quick_break = 5
-        long_break = 20
+        work_time = 25 * 60
+        quick_break = 5 * 60
+        long_break = 20 * 60
 
         if self.reps in [1, 3, 5, 7]:
             self.count_down(work_time)
