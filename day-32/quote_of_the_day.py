@@ -3,10 +3,10 @@ import datetime as dt
 import pandas as pd
 import random
 
-my_email = 'jerusalemz.spider@gmail.com'
-password = 'Manuela17@'
-to_email = "jerusalemz.spider@yahoo.com"
-yahoo_app_password = 'qscbwgzcpvigqyri'
+my_email = '######'
+password = '########'
+to_email = "######"
+yahoo_app_password = '######'
 
 df = pd.read_csv('quotes.txt', delimiter = '\t')
 now = dt.datetime.now()
