@@ -7,7 +7,7 @@ token = ''
 
 params = {
     "token": "uwefhwejfhwejfhejfeh",
-    "username": "jeffrey",
+    "username": "",
     "agreeTermsOfService": "yes",
     "notMinor": "yes",
 }
